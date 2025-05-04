@@ -31,11 +31,11 @@ public class StgGenerator : MonoBehaviour
     {
         allSphereDistance = 10;
         objDistanceByNum = 2;
-        UnityEngine.Random.InitState(123);
         allSpherePosShift = 20;
         objNumExp = 0;
         if (GameVariableManager.stageNum == 1)
         {
+            UnityEngine.Random.InitState(123);
             iLength = 10;
             for (int i = 0; i < iLength; i++)
             {
@@ -67,6 +67,7 @@ public class StgGenerator : MonoBehaviour
         }
         else if (GameVariableManager.stageNum == 2)
         {
+            UnityEngine.Random.InitState(456);
             iLength = 15;
             for (int i = 0; i < iLength; i++)
             {

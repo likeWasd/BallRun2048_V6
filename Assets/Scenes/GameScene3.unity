@@ -1308,7 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereNumObj: {fileID: 2020687087}
-  defaultPlayerNumExp: 12
+  defaultPlayerNumExp: 1
   stringTextGoal: {fileID: 882726403}
   stringTextResult: {fileID: 1788505672}
   timeText: {fileID: 654584957}

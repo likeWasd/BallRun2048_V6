@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z > -5)
+        if (transform.position.z < 170 || GameVariableManager.stageNum != 3)
         {
             transform.position += moveSpeedF * transform.forward * Time.deltaTime;
         }
@@ -137,7 +137,7 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 GameVariableManager.retryTimes++;
-                SceneManager.LoadSceneAsync("GameScene" + GameVariableManager.defaultStageNum, LoadSceneMode.Single);
+                SceneManager.LoadSceneAsync("GameScene1", LoadSceneMode.Single);
             }
         }
     }

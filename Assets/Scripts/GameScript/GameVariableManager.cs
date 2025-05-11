@@ -15,7 +15,7 @@ public class GameVariableManager : MonoBehaviour
     void Start()
     {
         retryTimes = 0;
-        defaultStageNum = 1;
+        defaultStageNum = 3;
         stageNum = defaultStageNum;
         MaterialDataBase = Resources.Load<MaterialScriptableObj>("MaterialDataBase1");
         if (defaultStageNum >= 2) SceneManager.LoadSceneAsync("GameScene" + stageNum, LoadSceneMode.Single);

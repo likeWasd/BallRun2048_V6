@@ -106,6 +106,7 @@ public class StgGenerator : MonoBehaviour
                 GenerateSphereArrayRandom(0, 0);
                 if (i > 0) objNumExp++;
             }
+            GenerateObject(0, 200, 10f, 1f);
         }
     }
 

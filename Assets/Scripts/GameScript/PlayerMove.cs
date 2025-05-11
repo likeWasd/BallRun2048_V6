@@ -20,10 +20,12 @@ public class PlayerMove : MonoBehaviour
     int eachWallNum;
     float clearElapsedTime;
     int clearRetryTimes;
+    bool isClear;
     [SerializeField] TextMeshProUGUI stringTextGoal;
     [SerializeField] TextMeshProUGUI stringTextResult;
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] TextMeshProUGUI retriedText;
+    [SerializeField] GameObject returnButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,38 +46,45 @@ public class PlayerMove : MonoBehaviour
         {
             sphereNumObj.text = playerNum.ToString();
         }
+        isClear = false;
         stringTextGoal.enabled = false;
         stringTextResult.enabled = false;
         timeText.enabled = false;
         retriedText.enabled = false;
+        returnButton.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < 170 || GameVariableManager.stageNum != 3)
+        if (transform.position.z < 220 || GameVariableManager.stageNum != 3)
         {
             transform.position += moveSpeedF * transform.forward * Time.deltaTime;
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.position -= moveSpeedLR * transform.right * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.position += moveSpeedLR * transform.right * Time.deltaTime;
+            }
         }
         else
         {
-            clearElapsedTime = GameVariableManager.elapsedTime;
-            clearRetryTimes = GameVariableManager.retryTimes;
-            timeText.text = clearElapsedTime.ToString("f3") + "s";
-            retriedText.text = clearRetryTimes.ToString();
-            stringTextGoal.enabled = true;
-            stringTextResult.enabled = true;
-            timeText.enabled = true;
-            retriedText.enabled = true;
-            UnityEditor.EditorApplication.isPaused = true;
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.position -= moveSpeedLR * transform.right * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.position += moveSpeedLR * transform.right * Time.deltaTime;
+            if (!isClear)
+            {
+                clearElapsedTime = GameVariableManager.elapsedTime;
+                clearRetryTimes = GameVariableManager.retryTimes;
+                timeText.text = clearElapsedTime.ToString("f3") + "s";
+                retriedText.text = clearRetryTimes.ToString();
+                stringTextGoal.enabled = true;
+                stringTextResult.enabled = true;
+                timeText.enabled = true;
+                retriedText.enabled = true;
+                returnButton.SetActive(true);
+                isClear = true;
+            }
+            //UnityEditor.EditorApplication.isPaused = true;
         }
     }
 
@@ -123,8 +132,11 @@ public class PlayerMove : MonoBehaviour
             if (playerNum >= eachWallNum)
             {
                 Destroy(collision.gameObject);
-                GameVariableManager.stageNum++;
-                SceneManager.LoadSceneAsync("GameScene" + GameVariableManager.stageNum, LoadSceneMode.Single);
+                if (GameVariableManager.stageNum < 3)
+                {
+                    GameVariableManager.stageNum++;
+                    SceneManager.LoadSceneAsync("GameScene" + GameVariableManager.stageNum, LoadSceneMode.Single);
+                }
                 /*
                 moveSpeedF = 6;
                 objNumExp = 1;
@@ -137,7 +149,7 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 GameVariableManager.retryTimes++;
-                SceneManager.LoadSceneAsync("GameScene1", LoadSceneMode.Single);
+                SceneManager.LoadSceneAsync("GameScene" + GameVariableManager.stageNum, LoadSceneMode.Single);
             }
         }
     }

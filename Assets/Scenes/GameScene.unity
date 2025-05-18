@@ -204,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 335525776}
-        m_TargetAssemblyTypeName: ReturnManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
         m_MethodName: onClickReturnButton
         m_Mode: 1
         m_Arguments:
@@ -262,9 +262,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 335525771}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9940c0b5317bba946b58312c826bcf74, type: 3}
+  m_Script: {fileID: 11500000, guid: decb03f7e7ce64a4281c5dc4c797f050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultStageNum: 0
 --- !u!1 &591652166
 GameObject:
   m_ObjectHideFlags: 0

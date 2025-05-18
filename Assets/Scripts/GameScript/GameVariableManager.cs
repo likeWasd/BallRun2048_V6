@@ -8,22 +8,26 @@ public class GameVariableManager : MonoBehaviour
     public static int retryTimes;
     public static float elapsedTime;
     public static int stageNum;
-    [SerializeField] int defaultStageNum;
+    public static bool isStarted;
     //public Material[] numMaterial;
     public MaterialScriptableObj MaterialDataBase;
     // Start is called before the first frame update
     void Start()
     {
         retryTimes = 0;
-        defaultStageNum = 3;
-        stageNum = defaultStageNum;
         MaterialDataBase = Resources.Load<MaterialScriptableObj>("MaterialDataBase1");
-        if (defaultStageNum >= 2) SceneManager.LoadSceneAsync("GameScene" + stageNum, LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("TitleScene", LoadSceneMode.Single);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isStarted)
+        {
+            retryTimes = 0;
+            elapsedTime = 0.0f;
+            isStarted = false;
+        }
         elapsedTime += Time.deltaTime;
     }
 

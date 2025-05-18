@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
+    [SerializeField] int defaultStageNum;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,12 +13,14 @@ public class TitleManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void onClickStartButton()
     {
-        SceneManager.LoadSceneAsync("GameScene1", LoadSceneMode.Single);
+        GameVariableManager.isStarted = true;
+        GameVariableManager.stageNum = defaultStageNum;
+        SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Single);
     }
 
     public void onClickReturnButton()

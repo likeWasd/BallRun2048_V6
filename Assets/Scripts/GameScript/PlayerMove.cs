@@ -135,7 +135,7 @@ public class PlayerMove : MonoBehaviour
                 if (GameVariableManager.stageNum < 3)
                 {
                     GameVariableManager.stageNum++;
-                    SceneManager.LoadSceneAsync("GameScene" + GameVariableManager.stageNum, LoadSceneMode.Single);
+                    SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Single);
                 }
                 /*
                 moveSpeedF = 6;
@@ -149,7 +149,7 @@ public class PlayerMove : MonoBehaviour
             else
             {
                 GameVariableManager.retryTimes++;
-                SceneManager.LoadSceneAsync("GameScene" + GameVariableManager.stageNum, LoadSceneMode.Single);
+                SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Single);
             }
         }
     }

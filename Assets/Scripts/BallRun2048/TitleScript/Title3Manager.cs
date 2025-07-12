@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleManager : MonoBehaviour
+public class Title3Manager : MonoBehaviour
 {
     [SerializeField] int defaultStageNum;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,11 +20,16 @@ public class TitleManager : MonoBehaviour
     {
         GameVariableManager.isStarted = true;
         GameVariableManager.stageNum = defaultStageNum;
-        SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Game3Scene", LoadSceneMode.Single);
     }
 
-    public void onClickReturnButton()
+    public void onClickReturnTitleButton()
     {
-        SceneManager.LoadSceneAsync("TitleScene", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Title3Scene", LoadSceneMode.Single);
+    }
+
+    public void onClickReturnSelectButton()
+    {
+        SceneManager.LoadSceneAsync("GameSelect", LoadSceneMode.Single);
     }
 }

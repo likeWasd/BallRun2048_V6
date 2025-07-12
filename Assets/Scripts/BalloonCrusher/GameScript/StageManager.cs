@@ -23,6 +23,9 @@ public class StageManager : MonoBehaviour
         {
             killedEnemyCount = 0;
             stageNumber++;
+            SceneManager.UnloadSceneAsync("Game2EnemyGenerator");
+            SceneManager.LoadSceneAsync("Game2EnemyGenerator", LoadSceneMode.Additive);
+            /*
             if (stageNumber % 2 == 0)
             {
                 SceneManager.LoadScene("Stage2", LoadSceneMode.Additive);
@@ -33,6 +36,7 @@ public class StageManager : MonoBehaviour
                 SceneManager.LoadScene("Stage1", LoadSceneMode.Additive);
                 SceneManager.UnloadSceneAsync("Stage2");
             }
+            */
         }
     }
 }

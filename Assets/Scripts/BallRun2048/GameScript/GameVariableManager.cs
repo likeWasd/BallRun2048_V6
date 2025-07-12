@@ -16,7 +16,7 @@ public class GameVariableManager : MonoBehaviour
     {
         retryTimes = 0;
         MaterialDataBase = Resources.Load<MaterialScriptableObj>("MaterialDataBase1");
-        SceneManager.LoadSceneAsync("TitleScene", LoadSceneMode.Single);
+        SceneManager.LoadSceneAsync("Title3Scene", LoadSceneMode.Single);
     }
 
     // Update is called once per frame

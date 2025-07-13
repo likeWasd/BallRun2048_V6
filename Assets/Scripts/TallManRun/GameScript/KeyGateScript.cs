@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class KeyGateScript : MonoBehaviour
 {
@@ -24,6 +24,17 @@ public class KeyGateScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+    }
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void Create(int defaultChangingKey, DiamondGateScript.DiamondOperators op)
+    {
+        valueChangingKey = defaultChangingKey;
         switch (keyOperatorType)
         {
             case KeyOperators.Add:
@@ -38,11 +49,6 @@ public class KeyGateScript : MonoBehaviour
             case KeyOperators.Divide:
                 tmpGateKeyCount.text = $"÷{valueChangingKey}";
                 break;
-        }        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

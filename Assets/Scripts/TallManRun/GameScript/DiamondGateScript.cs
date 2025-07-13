@@ -24,6 +24,17 @@ public class DiamondGateScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+    }
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void Create(int defaultChangingDiamond, DiamondOperators op)
+    {
+        valueChangingDiamond = defaultChangingDiamond;
         switch (diamondOperatorType)
         {
             case DiamondOperators.Add:
@@ -38,11 +49,6 @@ public class DiamondGateScript : MonoBehaviour
             case DiamondOperators.Divide:
                 tmpGateDiamondCount.text = $"÷{valueChangingDiamond}";
                 break;
-        }        
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

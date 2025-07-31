@@ -19,7 +19,6 @@ public class DiamondManager : MonoBehaviour
     // [SerializeField] int totalDiaCouDefVal;
     // [SerializeField] int diamondDefaultValue;
     [SerializeField] TextMeshProUGUI tmpDiamondCount;
-    KeyManager keyManager;
     [SerializeField] TextMeshProUGUI ScoreText;
     // Start is called before the first frame update
     void Start()

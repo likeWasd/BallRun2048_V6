@@ -9,7 +9,6 @@ public class KeyManager : MonoBehaviour
     /// 鍵の個数
     /// </summary>
     [HideInInspector] public int keyCount;
-    // [SerializeField] int keyDefaultValue; // 0に設定していた
     [SerializeField] TextMeshProUGUI tmpkeyCount;
     // Start is called before the first frame update
     void Start()

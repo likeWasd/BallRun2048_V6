@@ -1,46 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class DiamondManager : MonoBehaviour
+public class ItemManager : MonoBehaviour
 {
     /// <summary>
     /// ダイヤモンドの個数
     /// </summary>
-    [HideInInspector] public int diamondCount;
+    private int _diamondCount;
+    /// <summary>
+    /// 鍵の個数
+    /// </summary>
+    private int _keyCount;
     /// <summary>
     /// ダイヤモンドの個数の合計
     /// </summary>
-    int totalDiamondCount;
-    /// <summary>
-    /// 別のダイヤモンドの個数の合計の初期値
-    /// </summary>
-    // [SerializeField] int totalDiaCouDefVal;
-    // [SerializeField] int diamondDefaultValue;
-    [SerializeField] TextMeshProUGUI tmpDiamondCount;
-    [SerializeField] TextMeshProUGUI ScoreText;
+    private int _totalDiamondCount;
+    [SerializeField] private TextMeshProUGUI tmpDiamondCount;
+    [SerializeField] private TextMeshProUGUI tmpkeyCount;
+    [SerializeField] private TextMeshProUGUI ScoreText;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         // _totalDiamondCount = totalDiaCouDefVal;
-        diamondCount = 0; // デバッグ中は0をdiamondDefaultValueにする
+        _diamondCount = 0; // デバッグ中は0をdiamondDefaultValueにする
     }
-    
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        diamondCount = Mathf.Clamp(diamondCount, 0, diamondCount);
-        tmpDiamondCount.text = "Diamond " + diamondCount.ToString();
+        _diamondCount = Mathf.Clamp(_diamondCount, 0, _diamondCount);
+        tmpDiamondCount.text = "Diamond " + _diamondCount.ToString();
     }
 
     // ダイヤモンドの個数をセットする
     public int Set(int value)
     {
-        diamondCount = value;
-        return diamondCount;
+        _diamondCount = value;
+        return _diamondCount;
     }
-    
+
     // ダイヤモンドの数を変える
     public int Change(DiamondGateScript.DiamondOperators op, int value)
     {
@@ -63,42 +61,42 @@ public class DiamondManager : MonoBehaviour
                 Divide(value);
                 break;
         }
-        return diamondCount;
+        return _diamondCount;
     }
 
     // ダイヤモンドの個数を増やす(足し算する)
-    int Add(int value)
+    private int Add(int value)
     {
-        diamondCount += value;
-        return diamondCount;
+        _diamondCount += value;
+        return _diamondCount;
     }
 
     // ダイヤモンドの個数を減らす(引き算する)
-    int Subtract(int value)
+    private int Subtract(int value)
     {
-        diamondCount -= value;
-        return diamondCount;
+        _diamondCount -= value;
+        return _diamondCount;
     }
 
     // ダイヤモンドの個数を掛ける(掛け算する)
-    int Multiply(int value)
+    private int Multiply(int value)
     {
-        diamondCount *= value;
-        return diamondCount;
+        _diamondCount *= value;
+        return _diamondCount;
     }
 
     // ダイヤモンドの個数を割る(割り算する)
-    int Divide(int value)
+    private int Divide(int value)
     {
-        diamondCount /= value;
-        return diamondCount;
+        _diamondCount /= value;
+        return _diamondCount;
     }
 
     public void DiamondAndKeyMultiplication(int value)
     {
-        diamondCount *= value;
-        totalDiamondCount += diamondCount;
-        ScoreText.text = "Score:" + totalDiamondCount.ToString();
-        diamondCount = 0;
+        _diamondCount *= value;
+        _totalDiamondCount += _diamondCount;
+        ScoreText.text = "Score:" + _totalDiamondCount.ToString();
+        _diamondCount = 0;
     }
 }
